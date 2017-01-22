@@ -10,8 +10,8 @@ import textwrap
 BACKGROUND="background.png"
 FONT="Ubuntu Mono"
 DATABASE="db.sqlite3"
-STARTEP=0
-ENDEP=6
+#STARTEP=0
+#ENDEP=6
 FONT="cmunbi.ttf"
 EPISODE_NUM_FONT_SIZE=250
 EPISODE_NAME_FONT_SIZE=95
@@ -66,7 +66,7 @@ def dropShadow( image, offset=(5,5), background=0xffffff, shadow=0x444444,
   
   return back
 
-for episode in conn.execute("select episodeid, episodename from episode where episodeid between ? and ?", (STARTEP, ENDEP)):
+for episode in conn.execute("select episodeid, episodename from episode where uploaddate is null"):
 	background = Image.open(BACKGROUND)
 	print(episode[0])
 	if episode[0] < 10:
